@@ -1,0 +1,30 @@
+.sidebar .nav-item {
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+html,
+body,
+#__next {
+  height: 100%;
+}
+
+.custom-space {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+.nav-create:hover .create-menu {
+  display: inline-block;
+}
+.create-menu {
+  display: none;
+  position: absolute;
+  z-index: 1;
+  border: 1px solid #eee;
+  width: 100%;
+  background-color: #fff;
+}
+.create-menu .nav-item:hover {
+  color: #2875fe;
+  cursor: pointer;
+}
