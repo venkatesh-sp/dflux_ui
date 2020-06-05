@@ -33,7 +33,7 @@ function SideBar() {
           </ul>
         </li>
 
-        <Link href="/data-sources">
+        <Link href="/datasources">
           <li className="nav-item">
             <img src="/images/data-sources.png"></img>
           </li>

@@ -1,20 +1,10 @@
-import React from "react";
 import MainLayout from "layouts/MainLayout";
-import { Row, Col, Button } from "react-bootstrap";
-
-import DashboardCard from "components/dashboard/DashboardCard";
-import DashboardNavbar from "components/dashboard/Navbar";
-
+import DatasourceNavbar from "components/datasources/Navbar";
 import CardDeck from "react-bootstrap/CardDeck";
-import DataTable from "react-data-table-component";
+import { Row, Col, Button } from "react-bootstrap";
+import DataCard from "components/datasources/card";
 
-import useSWR from "swr";
-// api fetcher
-import { APIFetcher } from "lib/service";
-
-function Dashboard() {
-  // const employees = APIFetcher("http://dummy.restapiexample.com/api/v1/employees");
-  // console.log("emp", employees);
+function Datasources() {
   const employees = [
     {
       id: "1",
@@ -158,48 +148,22 @@ function Dashboard() {
     },
   ];
 
-  const columns = [
-    {
-      name: "Employee Id",
-      selector: "id",
-      sortable: true,
-    },
-    {
-      name: "Employee Name",
-      selector: "employee_name",
-      sortable: true,
-    },
-    {
-      name: "Employee Age",
-      selector: "employee_age",
-      sortable: true,
-    },
-    {
-      name: "Employee Salary",
-      selector: "employee_salary",
-      sortable: true,
-    },
-    {
-      name: "Profile Image",
-      selector: "profile_image",
-    },
-  ];
-
+  const dataCards = employees.map((item, index) => {
+    return (
+      <React.Fragment key={index}>
+        <Col xs={12} sm={4} md={3} key={index}>
+          <DataCard data={item} />
+        </Col>
+      </React.Fragment>
+    );
+  });
   return (
-    <div>
-      <DashboardNavbar />
-
-      <DataTable
-        data={employees}
-        columns={columns}
-        fixedHeader
-        fixedHeaderScrollHeight="700px"
-        // noTableHead={true}
-      />
-    </div>
+    <>
+      <DatasourceNavbar />
+      <CardDeck>{dataCards}</CardDeck>
+    </>
   );
 }
+Datasources.Layout = MainLayout;
 
-Dashboard.Layout = MainLayout;
-
-export default Dashboard;
+export default Datasources;
